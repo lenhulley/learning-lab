@@ -3,23 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Learning Lab</title>
-<meta name="description" content="Spel för att upptäcka, öva och förstå matte.">
-<link rel="stylesheet" href="./style.css">
+<title>Learning Lab · Spela Signalbrott</title>
+<meta name="description" content="En sändare har tystnat. Följ signalen och knäck koderna i Signalbrott, det första spelet i Learning Lab.">
+<link rel="stylesheet" href="./landing.css">
 </head>
 <body>
 <main>
-  <header><strong lang="en">LEARNING LAB</strong></header>
-  <h1 lang="en">Learning Lab</h1>
-  <p>Upptäck, öva och förstå matte genom att spela.</p>
-  <section class="tip-grid" aria-label="Spel">
-    <section>
-      <p class="tag">MATTE // MULTIPLIKATION</p>
-      <h2>Signalbrott</h2>
-      <p>Spåra en försvunnen sändare och knäck koder med gångertabellerna.</p>
-      <a class="tip-example" href="./signalbrott.html">Spela Signalbrott →</a>
-    </section>
-  </section>
+  <header class="masthead">
+    <h1 lang="en"><span class="logo" aria-hidden="true">↯</span> Learning Lab</h1>
+    <span class="edition">SPELARKIVET</span>
+  </header>
+
+  <article class="feature" aria-labelledby="game-title">
+    <div class="briefing">
+      <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> SIGNAL MOTTAGEN <span class="number">/ 01</span></p>
+      <h2 id="game-title">Signalbrott</h2>
+      <p class="hook">Vid midnatt tystnade sändare 07.</p>
+      <p class="story">Följ reservsignalen, knäck koderna och ta reda på vad som hände vid den stängda stationen.</p>
+      <a class="launch" href="./signalbrott.html">Spela Signalbrott <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <figure class="art" aria-hidden="true">
+      <svg viewBox="0 0 600 500" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <defs>
+          <linearGradient id="night" x2=".25" y2="1">
+            <stop stop-color="#23204f"/><stop offset="1" stop-color="#080f20"/>
+          </linearGradient>
+          <radialGradient id="glow">
+            <stop stop-color="#c3ff5b" stop-opacity=".29"/><stop offset="1" stop-color="#c3ff5b" stop-opacity="0"/>
+          </radialGradient>
+          <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+            <path d="M30 0H0V30" fill="none" stroke="#b6afff" stroke-opacity=".17"/>
+          </pattern>
+        </defs>
+        <path fill="url(#night)" d="M0 0h600v500H0z"/>
+        <path fill="url(#grid)" d="M0 0h600v500H0z"/>
+        <circle cx="341" cy="164" r="149" fill="url(#glow)"/>
+        <g fill="none" stroke="#c3ff5b">
+          <circle cx="341" cy="164" r="42" opacity=".6"/>
+          <circle cx="341" cy="164" r="79" opacity=".38"/>
+          <circle cx="341" cy="164" r="115" opacity=".24"/>
+          <circle class="sweep" cx="341" cy="164" r="97" stroke-dasharray="68 542" stroke-width="3"/>
+          <path d="M341 48v14m0 204v14M225 164h14m204 0h14" opacity=".7"/>
+        </g>
+        <path d="m0 340 86-38 56 12 102-58 80 59 77-24 82 34 117-41v216H0z" fill="#22264c"/>
+        <path d="m0 379 100-29 69 12 90-26 93 30 93-18 155 12v140H0z" fill="#101a31"/>
+        <path d="M0 440c128 1 128-53 260-53s208 36 340 26m-600 42c128 1 128-53 260-53s208 36 340 26" fill="none" stroke="#a49dd4" opacity=".43"/>
+        <path d="M82 425 173 405l81-43 87-198" fill="none" stroke="#c3ff5b" stroke-dasharray="4 9" stroke-width="2" opacity=".64"/>
+        <g fill="#c3ff5b">
+          <circle cx="82" cy="425" r="5"/><circle cx="173" cy="405" r="5"/><circle cx="254" cy="362" r="5"/>
+        </g>
+        <g fill="none" stroke="#e1e5ff" stroke-width="3" stroke-linejoin="round">
+          <path d="m304 344 37-180 37 180m-66-37 53-31-41-28 27-25m19 84-53-31 41-28-27-25m-27 121h74"/>
+          <path d="M327 212h28"/>
+        </g>
+        <circle cx="341" cy="164" r="8" fill="#c3ff5b"/>
+        <g fill="#d9d9ff" font-family="monospace" font-size="12" letter-spacing="2">
+          <text x="32" y="39">RX / 07</text>
+          <text x="462" y="39">00:00:07</text>
+          <text x="32" y="477">RESERVKANAL</text>
+        </g>
+      </svg>
+      <figcaption>ARKIVBILD 07 <span>●</span> RESERVSIGNAL</figcaption>
+    </figure>
+    <footer class="dossier">
+      <span>01 <b>ÄVENTYR</b></span>
+      <span>5 <b>KAPITEL</b></span>
+      <span>× <b>GÅNGERTABELLER</b></span>
+    </footer>
+  </article>
 </main>
 </body>
 </html>
