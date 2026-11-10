@@ -3,20 +3,20 @@ const words = {
   sv: {
     title: 'Robotbandet', intro: 'Varje robot spelar två slag! Tryck på en robot för att byta ljud.',
     stage: 'Scen', add: '＋ Robot', remove: '− Robot', play: '▶ Spela!', challenge: '★ Utmaning', listen: '◖)) Läs upp',
-    sounds: ['Bom', 'Ping', 'Popp'], robot: 'Robot', total: n => n + ' × 2 = ' + n * 2 + ' slag',
+    next: 'Nästa låt →', invite: 'Bjud in nästa robot', sounds: ['Bom', 'Ping', 'Popp'], robot: 'Robot', total: n => n + ' × 2 = ' + n * 2 + ' slag',
     spoken: n => (n === 1 ? 'En robot' : n + ' robotar') + '. Två slag var. ' + n * 2 + ' slag!',
-    ask: 'Kan bandet spela fyra slag? Lägg till eller ta bort robotar och tryck på Spela.',
-    success: 'Precis! Två robotar spelar två slag var. Det blir fyra!',
-    retry: n => 'Bandet spelade ' + n * 2 + ' slag. Kan du ändra bandet så att det blir fyra?'
+    ask: n => 'Kan bandet spela ' + n + ' slag? Ändra bandet och tryck på Spela.',
+    success: n => 'Precis! ' + n / 2 + ' robotar spelar två slag var. Det blir ' + n + '!',
+    retry: (n, target) => 'Bandet spelade ' + n * 2 + ' slag. Kan du ändra bandet så att det blir ' + target + '?'
   },
   en: {
     title: 'Robot Band', intro: 'Each robot plays two beats! Tap a robot to change its sound.',
     stage: 'Stage', add: '＋ Robot', remove: '− Robot', play: '▶ Play!', challenge: '★ Challenge', listen: '◖)) Read aloud',
-    sounds: ['Boom', 'Ping', 'Pop'], robot: 'Robot', total: n => n + ' × 2 = ' + n * 2 + ' beats',
+    next: 'Next song →', invite: 'Invite the next robot', sounds: ['Boom', 'Ping', 'Pop'], robot: 'Robot', total: n => n + ' × 2 = ' + n * 2 + ' beats',
     spoken: n => (n === 1 ? 'One robot' : n + ' robots') + '. Two beats each. ' + n * 2 + ' beats!',
-    ask: 'Can the band play four beats? Add or remove robots and press Play.',
-    success: 'Exactly! Two robots play two beats each. That makes four!',
-    retry: n => 'The band played ' + n * 2 + ' beats. Can you change the band to make four?'
+    ask: n => 'Can the band play ' + n + ' beats? Change the band and press Play.',
+    success: n => 'Exactly! ' + n / 2 + ' robots play two beats each. That makes ' + n + '!',
+    retry: (n, target) => 'The band played ' + n * 2 + ' beats. Can you change the band to make ' + target + '?'
   }
 };
 const paint = ['#baff8e', '#ffb1e2', '#8bdcff', '#ffce82'];
@@ -25,6 +25,7 @@ const band = [0];
 let playing = false;
 let challenge = false;
 let result = '';
+let target = 4;
 let audio;
 
 function say(text) {
@@ -48,7 +49,8 @@ function robotTile(index) {
     band[index] = (band[index] + 1) % 3;
     robot.replaceWith(robotTile(index));
     el('stage').children[index].focus();
-    enableAudio().then(() => beat(band[index]));
+    const sound = band[index];
+    enableAudio().then(() => { if (!playing) beat(sound); });
   };
   return robot;
 }
@@ -63,15 +65,39 @@ function render() {
   for (const id of ['title','intro','add','remove','play','challenge','listen']) el(id).textContent = t[id];
   el('stage').replaceChildren(...paint.map((_, index) => {
     if (index < band.length) return robotTile(index);
-    const empty = document.createElement('div');
+    const available = index === band.length;
+    const empty = document.createElement(available ? 'button' : 'div');
     empty.className = 'empty';
-    empty.setAttribute('aria-hidden', 'true');
-    empty.textContent = '✦';
+    empty.textContent = available ? '＋' : '✦';
+    if (available) {
+      empty.setAttribute('aria-label', t.invite);
+      empty.disabled = playing;
+      empty.onclick = () => {
+        addRobot();
+        el('stage').children[index].focus();
+      };
+    } else {
+      empty.setAttribute('aria-hidden', 'true');
+    }
     return empty;
   }));
+  el('total').setAttribute('aria-live', playing ? 'off' : 'polite');
   el('total').textContent = challenge && result !== 'success' ? '● ●  /  ' + band.length + ' × 2' : t.total(band.length);
-  el('prompt').hidden = !challenge;
-  el('prompt').textContent = result === 'retry' ? t.retry(band.length) : result ? t[result] : t.ask;
+  const track = band.map((_, index) => {
+    const pair = document.createElement('span');
+    pair.className = 'count-pair';
+    pair.style.setProperty('--paint', paint[index]);
+    pair.textContent = '● ●';
+    return pair;
+  });
+  el('count-track').replaceChildren(...track);
+  el('challenge-panel').hidden = !challenge;
+  el('challenge-panel').dataset.success = String(result === 'success');
+  el('target').textContent = '● '.repeat(target).trim();
+  el('next-challenge').textContent = t.next;
+  el('next-challenge').hidden = result !== 'success';
+  el('next-challenge').disabled = playing;
+  el('prompt').textContent = result === 'retry' ? t.retry(band.length, target) : result === 'success' ? t.success(target) : t.ask(target);
   el('challenge').setAttribute('aria-pressed', String(challenge));
   el('add').disabled = playing || band.length === 4;
   el('remove').disabled = playing || band.length === 1;
@@ -110,19 +136,22 @@ el('play').onclick = async () => {
   playing = true;
   render();
   await ready;
+  let count = 0;
   for (const [index, sound] of band.entries()) {
     const robot = el('stage').children[index];
     robot.classList.add('active');
     for (const pad of robot.querySelectorAll('.pad')) {
       pad.classList.add('hit');
+      el('total').textContent = String(++count);
       beat(sound);
       await pause(235);
     }
     robot.classList.remove('active');
+    el('count-track').children[index].classList.add('counted');
     await pause(260);
   }
   playing = false;
-  if (challenge) result = band.length === 2 ? 'success' : 'retry';
+  if (challenge) result = band.length * 2 === target ? 'success' : 'retry';
   render();
   el('play').focus();
   say(challenge ? el('prompt').textContent : words[language].spoken(band.length));
@@ -132,13 +161,26 @@ el('language').onclick = () => {
   if ('speechSynthesis' in window) speechSynthesis.cancel();
   render();
 };
-el('add').onclick = () => { if (!playing && band.length < 4) { band.push(band.length % 3); result = ''; render(); } };
+function addRobot() {
+  if (playing || band.length === 4) return;
+  band.push(band.length % 3);
+  result = '';
+  render();
+}
+el('add').onclick = addRobot;
+el('next-challenge').onclick = () => {
+  target = target === 8 ? 4 : target + 2;
+  result = '';
+  render();
+  el('play').focus();
+  say(words[language].ask(target));
+};
 el('remove').onclick = () => { if (!playing && band.length > 1) { band.pop(); result = ''; render(); } };
 el('challenge').onclick = () => {
   challenge = !challenge;
   result = '';
   render();
-  if (challenge) say(words[language].ask);
+  if (challenge) say(words[language].ask(target));
 };
 el('listen').onclick = () => say(challenge ? el('prompt').textContent : words[language].intro);
 render();
