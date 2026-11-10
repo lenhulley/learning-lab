@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signalbrott</title>
+<link rel="stylesheet" href="./style.css">
+<script defer src="./mission.js"></script>
+<script defer src="./game.js"></script>
+</head>
+<body>
+<main>
+  <header><strong>SIGNALBROTT <small>// 01</small></strong><nav aria-label="Inställningar"><a href="./" lang="en">Learning Lab</a><a id="tips" href="./tips.html" target="_blank" rel="noopener">Tabelltips ↗</a><button id="language" aria-label="English">SV / EN</button><button id="sound" aria-pressed="false">Ljud av</button></nav></header>
+  <aside class="route" aria-labelledby="route-title">
+    <p id="route-title" class="tag"></p>
+    <ol id="route"></ol>
+  </aside>
+  <section class="console" aria-labelledby="title">
+    <div class="briefing">
+      <p id="status" class="tag"></p>
+      <h1 id="title" tabindex="-1"></h1>
+      <p id="brief"></p>
+      <p id="equation" class="equation"></p>
+    </div>
+    <div class="receiver">
+      <div class="readout"><span id="panel"></span><span id="frequency"></span></div>
+      <svg class="waveform" viewBox="0 0 320 34" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 18h28l6-4 8 9 7-12 8 7h39l7-5 8 11 10-19 9 25 10-12h35l6-4 7 8 8-14 9 10h32l9-8 10 19 9-24 9 13h47"/>
+      </svg>
+      <div id="grid" aria-hidden="true"></div>
+      <p id="groups" class="groups" aria-live="polite"></p>
+      <button id="lock"></button>
+    </div>
+    <div class="controls">
+      <form id="puzzle" hidden>
+        <label for="answer" id="answer-label"></label>
+        <input id="answer" inputmode="numeric" pattern="[0-9]+" required autocomplete="off">
+        <button id="submit"></button>
+      </form>
+      <button id="anchor" aria-pressed="false" hidden></button><button id="group" aria-pressed="false" hidden></button>
+      <button id="hint" aria-controls="hint-text" aria-expanded="false" hidden></button>
+      <button id="why" aria-controls="explanation" aria-expanded="false" hidden></button>
+    </div>
+    <div id="choices" class="controls" hidden></div>
+    <p id="hint-text" hidden></p>
+    <p id="explanation" hidden></p>
+    <p id="feedback" role="status" hidden></p>
+    <button id="next" hidden></button>
+  </section>
+</main>
+</body>
+</html>

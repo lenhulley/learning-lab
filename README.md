@@ -1,6 +1,6 @@
 # Signalbrott
 
-Open index.html in a browser. Signalbrott follows a missing transmitter across
+Open index.html in a browser for the Learning Lab collection. Open signalbrott.html to play directly. Signalbrott follows a missing transmitter across
 five chapters and ten signals. The receiver teaches adding or removing a row,
 doubling, using ×10 as an anchor, and checking suspicious products. The final
 two signals let the player choose a tool or answer directly.
