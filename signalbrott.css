@@ -1,0 +1,110 @@
+.signalbrott {
+  --signal: #c3ff5b;
+  --alternate: #ffb574;
+  --line: #48416c;
+  --mono: ui-monospace, Consolas, monospace;
+  background:
+    radial-gradient(ellipse at 82% 0%, #2e2355, transparent 64%),
+    #090b16;
+  color: #f0efff;
+}
+.signalbrott main { max-width: 1120px; }
+.wordmark { display: inline-flex; align-items: center; gap: .55rem; }
+.radio-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: .55rem;
+  background: var(--signal);
+  color: #141a0d;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.signalbrott nav { gap: .35rem .55rem; }
+.signalbrott nav a { text-underline-offset: .2em; color: #dedaf5; font-size: .875rem; }
+.signalbrott button, .signalbrott #answer { border-color: #665e8b; border-radius: .55rem; }
+.signalbrott button { background: #26243f; }
+.signalbrott button:not(:disabled):hover { border-color: var(--signal); }
+.signalbrott .route { padding: .8rem; background: #101122; border-color: var(--line); }
+.signalbrott .route p { color: #c1bada; }
+.signalbrott .route button { min-height: 58px; padding: .5rem .6rem; }
+.signalbrott .route button[aria-current] {
+  border-color: var(--signal);
+  background: #293128;
+  box-shadow: inset 0 -3px var(--signal);
+}
+.signalbrott .route button:disabled { opacity: 1; color: #aea8c9; background: #18172a; }
+
+.signalbrott .console {
+  grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  gap: 1.15rem;
+  background: linear-gradient(135deg, #22213d, #111326 65%);
+  border-color: var(--line);
+  border-radius: 1.15rem;
+  box-shadow: 0 20px 55px #0006;
+}
+.signalbrott .briefing { position: relative; isolation: isolate; padding: .3rem 0; }
+.scope {
+  position: absolute;
+  inset: 0 0 auto auto;
+  width: min(64%, 240px);
+  z-index: -1;
+  fill: none;
+  stroke: #8d84c1;
+  opacity: .22;
+  pointer-events: none;
+}
+.scope-sweep { fill: #b8aaff; fill-opacity: .25; transform-origin: center; animation: radar 14s linear infinite; }
+.scope-contact { fill: var(--signal); stroke: none; }
+@keyframes radar { to { transform: rotate(360deg); } }
+.signalbrott #status { margin: 0 0 .7rem; color: var(--signal); font-size: .82rem; }
+.signalbrott h1 { max-width: 17ch; font-size: clamp(2.05rem, 5.2vw, 3.65rem); letter-spacing: -.055em; }
+.signalbrott #brief { max-width: 42ch; color: #d5cfea; }
+.signalbrott .equation {
+  display: inline-block;
+  padding: .1em .45em;
+  border: 1px solid #6c6d43;
+  border-radius: .45rem;
+  background: #161b24;
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+.signalbrott .receiver {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 100%;
+  background: #0c0f21;
+  border-color: #6a5d95;
+  box-shadow: inset 0 0 25px #b6a1ff13;
+}
+.signalbrott .readout { color: #c6bfe8; font-family: var(--mono); }
+.signalbrott #frequency { color: var(--signal); }
+.signalbrott .waveform { background: repeating-linear-gradient(90deg, #33305b 0 1px, transparent 1px 20px); }
+.signalbrott #grid { border: 1px solid #3f395f; border-radius: .5rem; background: repeating-linear-gradient(0deg, #11152a 0 21px, #222542 21px 22px); }
+.signalbrott .pulse-row i { box-shadow: 0 0 9px #c3ff5b45; }
+.signalbrott .pulse-row.pending i { box-shadow: none; }
+.signalbrott .pulse-row.second:not(.pending) i { box-shadow: 0 0 9px #ffb57465; }
+.signalbrott .groups { margin: .7rem 0; font-size: clamp(.9rem, 2vw, 1.15rem); }
+.signalbrott #lock, .signalbrott #submit, .signalbrott #next { background: var(--signal); color: #141a0d; border-color: var(--signal); }
+.signalbrott #lock:hover, .signalbrott #submit:hover, .signalbrott #next:hover { background: #ddff9e; }
+.signalbrott .controls button[aria-pressed="true"] { border-color: var(--signal); background: #293128; }
+.signalbrott .console > .controls:not(#choices) { grid-column: 1; grid-row: 2; align-self: start; }
+.signalbrott #puzzle { width: 100%; }
+.signalbrott #answer-label { flex-basis: 100%; font-size: .875rem; color: #d5cfea; }
+.signalbrott #feedback, .signalbrott #explanation, .signalbrott #hint-text { background: #25213e; border-radius: .35rem; }
+.signalbrott .console[data-solved="true"] #feedback { background: #242e25; border-color: var(--signal); animation: intercept .35s ease-out; }
+.signalbrott .console[data-finale="true"] #feedback { background: #3c2b29; border-color: var(--alternate); }
+@keyframes intercept { from { opacity: .3; transform: translateY(4px); } }
+
+@media (max-width: 690px) {
+  .signalbrott .route ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .signalbrott .route button { min-height: 44px; }
+  .signalbrott .console { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; }
+  .signalbrott .receiver, .signalbrott .console > .controls:not(#choices) { grid-column: 1; grid-row: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scope-sweep, .signalbrott .console[data-solved="true"] #feedback { animation: none; }
+}

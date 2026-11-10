@@ -5,18 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Signalbrott</title>
 <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./signalbrott.css">
 <script defer src="./mission.js"></script>
 <script defer src="./game.js"></script>
 </head>
-<body>
+<body class="signalbrott">
 <main>
-  <header><strong>SIGNALBROTT <small>// 01</small></strong><nav aria-label="Inställningar"><a href="./" lang="en">Learning Lab</a><a id="tips" href="./tips.html" target="_blank" rel="noopener">Tabelltips ↗</a><button id="language" aria-label="English">SV / EN</button><button id="sound" aria-pressed="false">Ljud av</button></nav></header>
+  <header><strong class="wordmark"><span class="radio-icon" aria-hidden="true">↯</span> SIGNALBROTT <small>// 07</small></strong><nav aria-label="Inställningar"><a href="./" lang="en">Learning Lab</a><a id="tips" href="./tips.html" target="_blank" rel="noopener">Tabelltips ↗</a><button id="language" aria-label="English">SV / EN</button><button id="sound" aria-pressed="false">Ljud av</button></nav></header>
   <aside class="route" aria-labelledby="route-title">
     <p id="route-title" class="tag"></p>
     <ol id="route"></ol>
   </aside>
   <section class="console" aria-labelledby="title">
     <div class="briefing">
+      <svg class="scope" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <circle cx="100" cy="100" r="84"/>
+        <circle cx="100" cy="100" r="58"/>
+        <circle cx="100" cy="100" r="32"/>
+        <path d="M16 100h168M100 16v168"/>
+        <path class="scope-sweep" d="M100 100V16a84 84 0 0 1 59 25Z"/>
+        <circle class="scope-contact" cx="137" cy="70" r="4"/>
+      </svg>
       <p id="status" class="tag"></p>
       <h1 id="title" tabindex="-1"></h1>
       <p id="brief"></p>
