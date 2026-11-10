@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Robotbandet · Learning Lab</title>
-<link rel="stylesheet" href="./robots.css?v=stage">
-<script defer src="./robots.js?v=stage"></script>
+<link rel="stylesheet" href="./robots.css?v=concert">
+<script defer src="./robots.js?v=concert"></script>
 </head>
 <body>
 <main>
@@ -27,9 +27,11 @@
     <button id="add">＋ Robot</button>
     <button id="remove">− Robot</button>
     <button id="play">▶ Spela!</button>
-    <button id="challenge">★ Utmaning</button>
+    <button id="challenge">★ Konsert</button>
+    <button id="jam-rhythm" hidden></button>
   </div>
   <section id="challenge-panel" hidden>
+    <p id="set-progress"></p>
     <div id="target" aria-hidden="true"></div>
     <p id="prompt" role="status"></p>
     <button id="next-challenge" hidden></button>

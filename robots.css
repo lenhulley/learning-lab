@@ -71,3 +71,7 @@ button.empty { font-size: 2rem; background: #342247; color: #ffda83; border-colo
 #prompt { margin: 0; background: transparent; }
 #next-challenge { border-color: #baff8e; }
 @media (prefers-reduced-motion: reduce) { .robot.active svg { animation: none; } }
+
+#set-progress { margin: 0 0 .35rem; color: #ffbde4; font-weight: 800; }
+#count-track { flex-wrap: wrap; justify-content: center; }
+#challenge-panel:not(:has(#target:not([hidden]))) { background: linear-gradient(130deg, #47305c, #383154); }
