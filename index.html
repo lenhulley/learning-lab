@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Learning Lab · Spela Signalbrott</title>
 <meta name="description" content="En sändare har tystnat. Följ signalen och knäck koderna i Signalbrott, det första spelet i Learning Lab.">
-<link rel="stylesheet" href="./landing.css?v=robot-band">
-<script defer src="./landing.js?v=robot-band"></script>
+<link rel="stylesheet" href="./landing.css?v=robot-stage">
+<script defer src="./landing.js?v=robot-stage"></script>
 </head>
 <body>
 <main>
@@ -83,17 +83,61 @@
   </article>
   <article id="younger-games" class="feature younger" aria-labelledby="younger-title" hidden>
     <div class="briefing">
-      <p id="younger-label" class="eyebrow">SPEL FÖR 5+</p>
+      <p id="younger-label" class="eyebrow">★ SCENEN ÄR DIN</p>
       <h2 id="younger-title">Robotbandet</h2>
-      <p id="younger-story" class="story">Sätt ihop ett robotband och hör hur två slag i taget blir till musik.</p>
-      <a class="launch" id="robot-link" href="./robots.html"><span id="robot-play">Spela Robotbandet</span> <span aria-hidden="true">↗</span></a>
+      <p id="younger-story" class="story">Välj dina robotar. Hitta takten. Spela för publiken!</p>
+      <a class="launch" id="robot-link" href="./robots.html"><span id="robot-play">Spela Robotbandet</span> <span aria-hidden="true">▶</span></a>
     </div>
-    <svg class="younger-art" viewBox="0 0 340 210" aria-hidden="true" focusable="false">
-      <circle cx="170" cy="105" r="86" fill="#342850"/>
-      <path d="M170 37l15 43 45 1-36 27 13 44-37-26-37 26 13-44-36-27 45-1z" fill="#ffcf7a"/>
-      <circle cx="70" cy="136" r="11" fill="#c3ff5b"/>
-      <rect x="245" y="59" width="22" height="22" rx="5" fill="#f6a9e5" transform="rotate(22 256 70)"/>
+    <svg class="younger-art" viewBox="0 0 520 360" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="robot-floor" x2="0" y2="1">
+          <stop stop-color="#774f8b"/><stop offset="1" stop-color="#362447"/>
+        </linearGradient>
+        <symbol id="robot-head" viewBox="0 0 100 100">
+          <path d="M50 30V14m-7 0h14M15 53H7m86 0h-8" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <rect x="14" y="28" width="72" height="57" rx="17" fill="currentColor"/>
+          <circle cx="37" cy="50" r="5" fill="#251a36"/>
+          <circle cx="63" cy="50" r="5" fill="#251a36"/>
+          <path d="M41 66q9 9 18 0" fill="none" stroke="#251a36" stroke-width="3" stroke-linecap="round"/>
+        </symbol>
+      </defs>
+      <path d="M50 58h420v237H50z" fill="#261b40" stroke="#8663a1" stroke-width="2"/>
+      <path d="M61 59h398l-51 44H112z" fill="#35224c"/>
+      <path d="M109 72 49 275h169L138 72z" fill="#c3ff5b" opacity=".09"/>
+      <path d="m247 72-80 203h186L273 72z" fill="#ffcb88" opacity=".12"/>
+      <path d="m382 72-75 203h165L411 72z" fill="#f6a9e5" opacity=".1"/>
+      <path d="M50 264h420l32 49H18z" fill="url(#robot-floor)" stroke="#a37fbd" stroke-width="2"/>
+      <path d="M18 313h484v15H18z" fill="#38244f"/>
+      <g fill="#ffcf7a">
+        <circle cx="124" cy="72" r="6"/><circle cx="260" cy="72" r="6"/><circle cx="396" cy="72" r="6"/>
+        <path d="M172 122v27a7 5 0 1 1-4-5v-22l16-4v5zM354 131v25a7 5 0 1 1-4-5v-20l15-4v5z"/>
+      </g>
+      <g class="poster-robot" style="color:#baff8e">
+        <use href="#robot-head" x="68" y="139" width="105" height="105"/>
+        <ellipse cx="121" cy="255" rx="33" ry="9" fill="currentColor"/>
+        <path d="M88 255v15c0 12 66 12 66 0v-15" fill="#4a6952"/>
+        <ellipse cx="121" cy="255" rx="33" ry="9" fill="currentColor"/>
+      </g>
+      <g class="poster-robot poster-lead" style="color:#ffcf7a">
+        <use href="#robot-head" x="195" y="106" width="130" height="130"/>
+        <path d="M219 242v20c0 15 82 15 82 0v-20" fill="#8e5d54"/>
+        <ellipse cx="260" cy="242" rx="41" ry="11" fill="currentColor"/>
+      </g>
+      <g class="poster-robot" style="color:#ffb1e2">
+        <use href="#robot-head" x="348" y="139" width="105" height="105"/>
+        <path d="M367 255v15c0 12 66 12 66 0v-15" fill="#78446f"/>
+        <ellipse cx="400" cy="255" rx="33" ry="9" fill="currentColor"/>
+      </g>
+      <g fill="#fff3d4">
+        <circle cx="113" cy="294" r="4"/><circle cx="128" cy="294" r="4"/>
+        <circle cx="252" cy="294" r="4"/><circle cx="267" cy="294" r="4"/>
+        <circle cx="392" cy="294" r="4"/><circle cx="407" cy="294" r="4"/>
+      </g>
     </svg>
+    <footer class="dossier robot-dossier">
+      <span>♪ <b id="robot-beats">TVÅ ELLER TRE SLAG</b></span>
+      <span>★ <b id="robot-songs">FEM ÖNSKELÅTAR</b></span>
+    </footer>
   </article>
 </main>
 </body>

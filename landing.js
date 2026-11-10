@@ -5,8 +5,8 @@ const labels = {
     story: 'Följ reservsignalen, knäck koderna och ta reda på vad som hände vid den stängda stationen.',
     'play-label': 'Spela Signalbrott', 'archive-caption': 'ARKIVBILD 07 ● RESERVSIGNAL',
     'adventure-label': 'ÄVENTYR', 'chapter-label': 'KAPITEL', 'maths-label': 'GÅNGERTABELLER',
-    'younger-label': 'SPEL FÖR 5+', 'younger-title': 'Robotbandet', 'robot-play': 'Spela Robotbandet',
-    'younger-story': 'Sätt ihop ett robotband och hör hur två slag i taget blir till musik.'
+    'younger-label': '★ SCENEN ÄR DIN', 'robot-beats': 'TVÅ ELLER TRE SLAG', 'robot-songs': 'FEM ÖNSKELÅTAR', 'younger-title': 'Robotbandet', 'robot-play': 'Spela Robotbandet',
+    'younger-story': 'Välj dina robotar. Hitta takten. Spela för publiken!'
   },
   en: {
     home: '← All apps', 'backup-label': 'BACKUP CHANNEL', 'signal-label': 'SIGNAL RECEIVED',
@@ -14,8 +14,8 @@ const labels = {
     story: 'Follow the backup signal, crack the codes and find out what happened at the closed station.',
     'play-label': 'Play Signalbrott', 'archive-caption': 'ARCHIVE IMAGE 07 ● BACKUP SIGNAL',
     'adventure-label': 'ADVENTURE', 'chapter-label': 'CHAPTERS', 'maths-label': 'TIMES TABLES',
-    'younger-label': 'GAMES FOR AGES 5+', 'younger-title': 'Robot Band', 'robot-play': 'Play Robot Band',
-    'younger-story': 'Build a robot band and hear how two beats at a time turn into music.'
+    'younger-label': '★ THE STAGE IS YOURS', 'robot-beats': 'TWO OR THREE BEATS', 'robot-songs': 'FIVE SONG REQUESTS', 'younger-title': 'Robot Band', 'robot-play': 'Play Robot Band',
+    'younger-story': 'Pick your robots. Find the beat. Play for the crowd!'
   }
 };
 

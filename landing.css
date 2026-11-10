@@ -71,9 +71,16 @@ figcaption span { color: var(--lime); }
 .age-picker button { min-width: 4.1rem; }
 .age-picker [aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: #151b10; }
 :focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
-.younger { background: linear-gradient(125deg, #211830, #30264a); }
-.younger .story { margin: 1rem 0 0; }
-.younger-art { align-self: center; width: min(100%, 430px); justify-self: center; }
+.younger { background: radial-gradient(ellipse at 75% 42%, #54386d, transparent 65%), #251a36; border-color: #8e679f; }
+.younger .story { margin: 1rem 0 1.3rem; color: #f1ddef; font-size: clamp(1.1rem, 2vw, 1.35rem); }
+.younger h2 { color: #ffda83; text-shadow: 0 3px #885568; }
+.younger .eyebrow { color: #ffbde4; }
+.younger .launch { min-height: 54px; background: #ffda83; color: #291d33; box-shadow: 0 4px #a76d70; }
+.younger .launch:hover { background: #ffe7a8; }
+.younger-art { align-self: center; width: min(100%, 520px); justify-self: center; }
+.robot-dossier { border-color: #8e679f; background: #21162e; color: #ffda83; }
+.robot-dossier b { color: #f1ddef; }
+.poster-lead { animation: poster-bop 1.6s ease-in-out infinite; }
+@keyframes poster-bop { 0%, 70%, 100% { transform: translateY(0); } 80%, 92% { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .poster-lead { animation: none; } }
 @media (max-width: 480px) { .masthead { flex-wrap: wrap; } }
-
-.younger .story { margin-bottom: 1.25rem; }
