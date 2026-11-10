@@ -66,6 +66,13 @@ const tips = [
     '8 × 4 = 32\n8 × 8 = 32 + 32 = 64'],
 ];
 
+const sections = [
+  { id: 'calculate', icon: '×', names: ['Räkna ut', 'Work it out'], cards: [0, 1, 2, 3, 4, 5, 6, 7, 12, 15] },
+  { id: 'patterns', icon: '≈', names: ['Se mönster', 'Spot patterns'], cards: [9, 10, 11, 13] },
+  { id: 'check', icon: '✓', names: ['Kolla svaret', 'Check it'], cards: [8, 14] },
+  { id: 'remember', icon: '#', names: ['Kom ihåg', 'Remember it'], cards: [16, 17] }
+];
+
 const language = document.getElementById('language');
 let english = new URLSearchParams(location.search).get('lang') === 'en';
 
@@ -74,7 +81,9 @@ function renderTips() {
   language.setAttribute('aria-label', english ? 'Svenska' : 'English');
   const title = english ? 'Times-table tips' : 'Tabelltips';
   document.title = title + ' · Signalbrott';
-  document.querySelector('header small').textContent = english ? '// HANDBOOK' : '// HANDBOK';
+  document.getElementById('edition').textContent = english ? 'FIELD MANUAL // 01' : 'FÄLTHANDBOK // 01';
+  document.querySelector('header nav').setAttribute('aria-label', english ? 'Settings' : 'Inställningar');
+  document.getElementById('tip-nav').setAttribute('aria-label', english ? 'Jump to a section' : 'Gå till avsnitt');
   document.getElementById('title').textContent = title;
   document.getElementById('intro').textContent = english
     ? 'Start with a fact you know. Pick a move that helps you work out the next one.'
@@ -82,7 +91,7 @@ function renderTips() {
 
   const cards = tips.map(([svTitle, enTitle, svText, enText, example]) => {
     const card = document.createElement('section');
-    const heading = document.createElement('h2');
+    const heading = document.createElement('h3');
     const body = document.createElement('p');
     const maths = document.createElement('p');
     heading.textContent = english ? enTitle : svTitle;
@@ -92,7 +101,32 @@ function renderTips() {
     card.append(heading, body, maths);
     return card;
   });
-  document.getElementById('cards').replaceChildren(...cards);
+  const links = [];
+  const groups = sections.map(({ id, icon, names, cards: indices }) => {
+    const name = names[english ? 1 : 0];
+    const group = document.createElement('section');
+    group.id = id;
+    group.className = 'tip-section';
+    group.setAttribute('aria-labelledby', id + '-title');
+    const heading = document.createElement('h2');
+    heading.id = id + '-title';
+    heading.textContent = name;
+    const grid = document.createElement('div');
+    grid.className = 'tip-grid';
+    grid.append(...indices.map(index => cards[index]));
+    group.append(heading, grid);
+
+    const link = document.createElement('a');
+    link.href = '#' + id;
+    const badge = document.createElement('span');
+    badge.setAttribute('aria-hidden', 'true');
+    badge.textContent = icon;
+    link.append(badge, name);
+    links.push(link);
+    return group;
+  });
+  document.getElementById('tip-nav').replaceChildren(...links);
+  document.getElementById('cards').replaceChildren(...groups);
 }
 
 language.onclick = () => {

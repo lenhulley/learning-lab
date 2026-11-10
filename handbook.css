@@ -1,0 +1,41 @@
+.handbook-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 4vw, 2.35rem);
+  border: 1px solid var(--line);
+  border-radius: 1.15rem;
+  background: linear-gradient(120deg, #22213d, #111326);
+  box-shadow: 0 20px 55px #0005;
+}
+.handbook-intro .tag { margin: 0; color: var(--signal); letter-spacing: .1em; font-size: .78rem; }
+.handbook-intro h1 { margin: .4rem 0; }
+.handbook-intro #intro { margin: .7rem 0 0; color: #d5cfea; max-width: 48ch; }
+.handbook-intro svg { width: clamp(80px, 24vw, 215px); flex: none; fill: none; stroke: var(--signal); }
+.handbook-intro svg path { stroke-width: 2; }
+.handbook-intro svg circle { opacity: .24; }
+.tip-nav { margin: 1rem 0 1.5rem; }
+.tip-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .5rem .75rem;
+  min-height: 44px;
+  border: 1px solid #665e8b;
+  border-radius: .55rem;
+  background: #19182c;
+  color: #f0efff;
+  text-decoration: none;
+  font-weight: 700;
+}
+.tip-nav a:hover { border-color: var(--signal); }
+.tip-nav span { color: var(--signal); font: 700 1rem var(--mono); }
+.tip-section { margin: 0 0 1.65rem; scroll-margin-top: 1rem; }
+.tip-section h2 { margin: 0 0 .6rem; color: var(--signal); font-size: 1.2rem; }
+.handbook .tip-grid { margin: 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr)); }
+.handbook .tip-grid section { background: #141629; border-color: var(--line); }
+.handbook .tip-grid h3 { margin: 0; font-size: 1.1rem; }
+.handbook .tip-grid p { color: #d5cfea; }
+.handbook .tip-grid .tip-example { background: #0c0f21; color: var(--signal); border-left: 2px solid var(--signal); border-radius: .25rem; padding: .55rem .65rem; overflow-wrap: anywhere; }
+@media (max-width: 460px) { .handbook-intro svg { display: none; } }

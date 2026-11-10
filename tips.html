@@ -5,14 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tabelltips · Signalbrott</title>
 <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./signalbrott.css">
+<link rel="stylesheet" href="./handbook.css">
 <script defer src="./tips.js"></script>
 </head>
-<body>
+<body class="signalbrott handbook">
 <main>
-  <header><strong>SIGNALBROTT <small>// HANDBOK</small></strong><button id="language">SV / EN</button></header>
-  <h1 id="title">Tabelltips</h1>
-  <p id="intro"></p>
-  <div id="cards" class="tip-grid"></div>
+  <header>
+    <strong class="wordmark"><span class="radio-icon" aria-hidden="true">↯</span> SIGNALBROTT</strong>
+    <nav aria-label="Inställningar">
+      <a href="./signalbrott.html">Signalbrott</a>
+      <button id="language">SV / EN</button>
+    </nav>
+  </header>
+  <section class="handbook-intro" aria-labelledby="title">
+    <div>
+      <p id="edition" class="tag">FÄLTHANDBOK // 01</p>
+      <h1 id="title">Tabelltips</h1>
+      <p id="intro"></p>
+    </div>
+    <svg viewBox="0 0 210 130" aria-hidden="true" focusable="false">
+      <path d="M5 65h36l12-15 12 31 14-52 17 73 15-37h30l10-17 13 34 12-17h29"/>
+      <circle cx="105" cy="65" r="62"/><circle cx="105" cy="65" r="43"/>
+    </svg>
+  </section>
+  <nav id="tip-nav" class="tip-nav" aria-label="Gå till avsnitt"></nav>
+  <div id="cards"></div>
 </main>
 </body>
 </html>
