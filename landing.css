@@ -75,3 +75,5 @@ figcaption span { color: var(--lime); }
 .younger .story { margin: 1rem 0 0; }
 .younger-art { align-self: center; width: min(100%, 430px); justify-self: center; }
 @media (max-width: 480px) { .masthead { flex-wrap: wrap; } }
+
+.younger .story { margin-bottom: 1.25rem; }

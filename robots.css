@@ -1,0 +1,26 @@
+:root { font: 18px/1.45 system-ui,sans-serif; color: #fff6e8; background: #19112b; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 50% 0%, #522d65, transparent 70%); }
+main { max-width: 850px; margin: auto; padding: 1rem; text-align: center; }
+header { display: flex; justify-content: space-between; align-items: center; }
+a { color: #ffda83; }
+h1 { font-size: clamp(2.5rem, 9vw, 5rem); margin: .55rem 0 0; line-height: 1; color: #ffda83; }
+#intro { margin: .65rem 0 1rem; }
+#stage { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; padding: .65rem; border: 2px solid #875d9f; border-radius: 1rem; background: #221735; }
+button { min-height: 48px; padding: .45rem .8rem; border: 2px solid #ac82c3; border-radius: .75rem; background: #38274d; color: inherit; font: 750 1rem system-ui,sans-serif; cursor: pointer; }
+button:disabled { opacity: .58; cursor: default; }
+button:focus-visible, a:focus-visible { outline: 3px solid #ffda83; outline-offset: 3px; }
+.robot { min-width: 0; padding: .3rem; border-color: var(--paint); }
+.robot svg { display: block; width: 100%; max-width: 110px; margin: auto; color: var(--paint); }
+.robot small { display: block; font-size: .75rem; }
+.pads { display: flex; justify-content: center; gap: .4rem; margin: .3rem 0; }
+.pad { width: 1.1rem; height: 1.1rem; border: 2px solid var(--paint); border-radius: 50%; }
+.pad.hit { background: var(--paint); box-shadow: 0 0 14px var(--paint); }
+.robot.active { background: #57406d; }
+.empty { display: grid; place-items: center; min-height: 115px; border: 2px dashed #795e8b; border-radius: .7rem; color: #c8aedb; }
+.controls { display: flex; flex-wrap: wrap; gap: .55rem; justify-content: center; }
+#play { background: #ffda83; color: #291d33; border-color: #ffda83; }
+#total { min-height: 2rem; font-weight: 800; font-size: 1.3rem; margin: .6rem 0; }
+#prompt { padding: .6rem; margin: .7rem 0; border-radius: .7rem; background: #39264e; }
+#listen { margin-top: .7rem; }
+@media (max-width: 480px) { #stage { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

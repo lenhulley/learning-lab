@@ -5,8 +5,8 @@ const labels = {
     story: 'Följ reservsignalen, knäck koderna och ta reda på vad som hände vid den stängda stationen.',
     'play-label': 'Spela Signalbrott', 'archive-caption': 'ARKIVBILD 07 ● RESERVSIGNAL',
     'adventure-label': 'ÄVENTYR', 'chapter-label': 'KAPITEL', 'maths-label': 'GÅNGERTABELLER',
-    'younger-label': 'SPEL FÖR 5+', 'younger-title': 'Små äventyr',
-    'younger-story': 'Här kommer vårt första spel för dig som är fem år eller äldre.'
+    'younger-label': 'SPEL FÖR 5+', 'younger-title': 'Robotbandet', 'robot-play': 'Spela Robotbandet',
+    'younger-story': 'Sätt ihop ett robotband och hör hur två slag i taget blir till musik.'
   },
   en: {
     home: '← All apps', 'backup-label': 'BACKUP CHANNEL', 'signal-label': 'SIGNAL RECEIVED',
@@ -14,8 +14,8 @@ const labels = {
     story: 'Follow the backup signal, crack the codes and find out what happened at the closed station.',
     'play-label': 'Play Signalbrott', 'archive-caption': 'ARCHIVE IMAGE 07 ● BACKUP SIGNAL',
     'adventure-label': 'ADVENTURE', 'chapter-label': 'CHAPTERS', 'maths-label': 'TIMES TABLES',
-    'younger-label': 'GAMES FOR AGES 5+', 'younger-title': 'Little adventures',
-    'younger-story': 'Our first game for ages five and up is coming here.'
+    'younger-label': 'GAMES FOR AGES 5+', 'younger-title': 'Robot Band', 'robot-play': 'Play Robot Band',
+    'younger-story': 'Build a robot band and hear how two beats at a time turn into music.'
   }
 };
 
@@ -37,6 +37,7 @@ function render() {
   document.getElementById('older-games').hidden = age !== '10';
   document.getElementById('younger-games').hidden = age !== '5';
   document.querySelector('.launch').href = './signalbrott.html?lang=' + language;
+  document.getElementById('robot-link').href = './robots.html?lang=' + language;
   params.set('lang', language);
   params.set('age', age);
   try { history.replaceState(null, '', '?' + params); } catch { /* Local file previews may restrict history. */ }
