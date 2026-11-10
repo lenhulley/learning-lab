@@ -5,22 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Learning Lab · Spela Signalbrott</title>
 <meta name="description" content="En sändare har tystnat. Följ signalen och knäck koderna i Signalbrott, det första spelet i Learning Lab.">
-<link rel="stylesheet" href="./landing.css">
+<link rel="stylesheet" href="./landing.css?v=age-language">
+<script defer src="./landing.js?v=age-language"></script>
 </head>
 <body>
 <main>
   <header class="masthead">
     <h1 lang="en"><span class="logo" aria-hidden="true">↯</span> Learning Lab</h1>
-    <span class="edition">SPELARKIVET</span>
+    <nav class="landing-nav" aria-label="Huvudmeny">
+      <a id="home" href="/">← Alla appar</a>
+      <button id="landing-language" type="button">SV / EN</button>
+    </nav>
   </header>
 
-  <article class="feature" aria-labelledby="game-title">
+  <div class="age-picker" role="group" aria-label="Åldersgrupp">
+    <button type="button" data-age="10" aria-pressed="true">10+</button>
+    <button type="button" data-age="5" aria-pressed="false">5+</button>
+  </div>
+
+  <article id="older-games" class="feature" aria-labelledby="game-title">
     <div class="briefing">
-      <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> SIGNAL MOTTAGEN <span class="number">/ 01</span></p>
+      <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> <span id="signal-label">SIGNAL MOTTAGEN</span> <span class="number">/ 01</span></p>
       <h2 id="game-title">Signalbrott</h2>
-      <p class="hook">Vid midnatt tystnade sändare 07.</p>
-      <p class="story">Följ reservsignalen, knäck koderna och ta reda på vad som hände vid den stängda stationen.</p>
-      <a class="launch" href="./signalbrott.html">Spela Signalbrott <span aria-hidden="true">↗</span></a>
+      <p class="hook" id="hook">Vid midnatt tystnade sändare 07.</p>
+      <p class="story" id="story">Följ reservsignalen, knäck koderna och ta reda på vad som hände vid den stängda stationen.</p>
+      <a class="launch" href="./signalbrott.html"><span id="play-label">Spela Signalbrott</span> <span aria-hidden="true">↗</span></a>
     </div>
 
     <figure class="art" aria-hidden="true">
@@ -61,16 +70,29 @@
         <g fill="#d9d9ff" font-family="monospace" font-size="12" letter-spacing="2">
           <text x="32" y="39">RX / 07</text>
           <text x="462" y="39">00:00:07</text>
-          <text x="32" y="477">RESERVKANAL</text>
+          <text id="backup-label" x="32" y="477">RESERVKANAL</text>
         </g>
       </svg>
-      <figcaption>ARKIVBILD 07 <span>●</span> RESERVSIGNAL</figcaption>
+      <figcaption id="archive-caption">ARKIVBILD 07 ● RESERVSIGNAL</figcaption>
     </figure>
     <footer class="dossier">
-      <span>01 <b>ÄVENTYR</b></span>
-      <span>5 <b>KAPITEL</b></span>
-      <span>× <b>GÅNGERTABELLER</b></span>
+      <span>01 <b id="adventure-label">ÄVENTYR</b></span>
+      <span>5 <b id="chapter-label">KAPITEL</b></span>
+      <span>× <b id="maths-label">GÅNGERTABELLER</b></span>
     </footer>
+  </article>
+  <article id="younger-games" class="feature younger" aria-labelledby="younger-title" hidden>
+    <div class="briefing">
+      <p id="younger-label" class="eyebrow">SPEL FÖR 5+</p>
+      <h2 id="younger-title">Små äventyr</h2>
+      <p id="younger-story" class="story">Här kommer vårt första spel för dig som är fem år eller äldre.</p>
+    </div>
+    <svg class="younger-art" viewBox="0 0 340 210" aria-hidden="true" focusable="false">
+      <circle cx="170" cy="105" r="86" fill="#342850"/>
+      <path d="M170 37l15 43 45 1-36 27 13 44-37-26-37 26 13-44-36-27 45-1z" fill="#ffcf7a"/>
+      <circle cx="70" cy="136" r="11" fill="#c3ff5b"/>
+      <rect x="245" y="59" width="22" height="22" rx="5" fill="#f6a9e5" transform="rotate(22 256 70)"/>
+    </svg>
   </article>
 </main>
 </body>

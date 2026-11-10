@@ -2,7 +2,7 @@ const byId = id => document.getElementById(id);
 const put = (id, text) => { byId(id).textContent = text; };
 const hide = (id, hidden) => { byId(id).hidden = hidden; };
 const answer = byId('answer');
-let language = 'sv';
+let language = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'sv';
 const saveKey = 'signalbrott-route-v1';
 let unlocked = 0;
 try {
@@ -92,6 +92,7 @@ function render() {
   consolePanel.dataset.solved = String(solved);
   consolePanel.dataset.finale = String(solved && stage === signals.length - 1);
   document.documentElement.lang = language;
+  byId('collection').href = './?lang=' + language + '&age=10';
   byId('tips').href = './tips.html?lang=' + language;
   put('tips', language === 'sv' ? 'Tabelltips ↗' : 'Times-table tips ↗');
   byId('language').setAttribute('aria-label', language === 'sv' ? 'English' : 'Svenska');

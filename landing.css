@@ -52,3 +52,26 @@ figcaption span { color: var(--lime); }
   .art { min-height: 0; aspect-ratio: 6 / 4; }
   .art svg { overflow: hidden; }
 }
+
+[hidden] { display: none !important; }
+.landing-nav, .age-picker { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; }
+.landing-nav a { color: var(--muted); padding: .45rem .3rem; text-underline-offset: .2em; }
+.landing-nav button, .age-picker button {
+  min-height: 44px;
+  padding: .45rem .85rem;
+  border: 1px solid #665e8b;
+  border-radius: .55rem;
+  background: #19182c;
+  color: #f1f1ff;
+  font: 700 1rem system-ui, sans-serif;
+  cursor: pointer;
+}
+.landing-nav button:hover, .age-picker button:hover { border-color: var(--lime); }
+.age-picker { margin: 0 0 1rem; }
+.age-picker button { min-width: 4.1rem; }
+.age-picker [aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: #151b10; }
+:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.younger { background: linear-gradient(125deg, #211830, #30264a); }
+.younger .story { margin: 1rem 0 0; }
+.younger-art { align-self: center; width: min(100%, 430px); justify-self: center; }
+@media (max-width: 480px) { .masthead { flex-wrap: wrap; } }
